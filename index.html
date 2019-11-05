@@ -17,6 +17,7 @@
     <script src="//unpkg.com/@uirouter/visualizer@4"></script>
 
     <!-- modelo de datos -->
+    <script src="model/IContratoResumen.js"></script>  
 
     <!-- servicios -->
 
@@ -29,15 +30,7 @@
 </head>
 <body ng-strict-di ng-cloak>
 
-   
-
-        <h1>{{'Repaso App' | uppercase }}</h1>
-
-        <nav>
-            <a ui-sref="home" ui-sref-active="active">Incio</a>
-            <a ui-sref="leeme" ui-sref-active="active">Leeme</a>
-            <a ui-sref="contratos" ui-sref-active="active">Filter-Map-Reduce</a>
-        </nav>
+        <div ng-include="'views/navbar.html'" ></div>       
 
         <!-- vistas a cargar dinamicamente al navegar por la app -->
         <main ui-view class="container"></main>

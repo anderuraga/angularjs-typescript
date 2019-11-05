@@ -1,5 +1,8 @@
 <h1>{{vm.contratos.length}} {{vm.titulo}}</h1>
-
+  <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseResumen" aria-expanded="false" aria-controls="collapseExample">
+    Mostrar Resumen de Contratos
+  </button>  
+  <div class="collapse" id="collapseResumen">
     <div class="col border p-2">
         <h2>Resumen Contratos</h2>
         <p>Numero de contratos sin acciones <b>{{vm.contratosSinAcciones.length}}</b></p>
@@ -12,6 +15,7 @@
             <li ng-repeat="accion in vm.acciones">{{accion}}</li>
         </ol>
     </div>
+  </div> 
 
 
     <div class="row">
@@ -49,9 +53,8 @@
         </div>
         <div class="col">
 
-            <h2>Contratos Mapeados</h2>
-
-            <h2>{{vm.contratosMapeados.length}} Todos los Contratos</h2>
+            <h2>{{vm.contratosMapeados.length}}Contratos Mapeados</h2>
+            <p>mapeamos los contratos para poder ordenar y filtrar por 'nombre' y 'numeroAcciones' <code>@see model/IContratoResumen.js</code></p>
                 <p>       
                         <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                           Filtro

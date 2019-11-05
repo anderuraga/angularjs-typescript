@@ -1,9 +1,3 @@
-interface IContratoResumen {
-    id: string;
-    nombre: string;
-    numeroAcciones: number;
-}
-
 interface IContratosController extends ng.IScope{
     vm: ContratosController;
 }
