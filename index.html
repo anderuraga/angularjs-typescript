@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="repaso">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=h1, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- hojas de estilos -->
+    <link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="resources/css/styles.css">
+
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
+    <script src="//unpkg.com/@uirouter/visualizer@4"></script>
+
+    <!-- modelo de datos -->
+
+    <!-- servicios -->
+
+    <!-- controladores -->
+    <script src="controllers/ContratosController.js"></script>  
+
+    <!-- nuestra App -->    
+    <script src="app.js"></script>  
+
+</head>
+<body ng-strict-di ng-cloak>
+
+   
+
+        <h1>{{'Repaso App' | uppercase }}</h1>
+
+        <nav>
+            <a ui-sref="home" ui-sref-active="active">Incio</a>
+            <a ui-sref="leeme" ui-sref-active="active">Leeme</a>
+            <a ui-sref="contratos" ui-sref-active="active">Filter-Map-Reduce</a>
+        </nav>
+
+        <!-- vistas a cargar dinamicamente al navegar por la app -->
+        <main ui-view class="container"></main>
+
+  
+        <!-- javascript boostrap -->        
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+nav a {
+    text-decoration: none;
+}
+
+.active{
+    color: teal;
+    font-weight: 800;
+    border-bottom: 3px solid teal;
+}

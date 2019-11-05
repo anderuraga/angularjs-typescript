@@ -1,0 +1,88 @@
+<h1>{{vm.contratos.length}} {{vm.titulo}}</h1>
+
+    <div class="col border p-2">
+        <h2>Resumen Contratos</h2>
+        <p>Numero de contratos sin acciones <b>{{vm.contratosSinAcciones.length}}</b></p>
+        <p>Numero de contratos entre 1 y 3 acciones <b>{{vm.contratosAcciones13.length}}</b></p>
+        <p>Numero de contratos entre > 3 acciones <b>{{vm.contratosAccionesMasDe3.length}}</b></p>
+        <p>Buscar 1º contrato que tenga en ACCIONES => "clave": "SITUACION" <b>{{vm.primerContratoAccionClaveSituacion.idColumn}}</b></p>
+        <p>Buscar ultimo contrato que tenga en ACCIONES => "clave": "SITUACION" <b>{{vm.ultimoContratoAccionClaveSituacion.idColumn}}</b></p>
+        <p>Todas las acciones diferentes</p>
+        <ol>
+            <li ng-repeat="accion in vm.acciones">{{accion}}</li>
+        </ol>
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+                <h2>{{vm.contratos.length}} Todos los Contratos</h2>
+                <p>       
+                        <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                          Filtro
+                        </button>
+                      </p>
+                      <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                          ID: <input type="search" ng-model="filtro.idColumn" placeholder="Identificador contrato">
+                          Nombre: <input type="search" ng-model="filtro.nombre" placeholder="Nombre de contrato">
+                        </div>
+                      </div>
+                
+                
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col" ng-click="campo='idColumn'; orden = !orden">#</th>
+                            <th scope="col" ng-click="campo='nombre'; orden = !orden">Nombre</th>
+                            <th scope="col" >Acciones</th>         
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat="contrato in vm.contratos | filter: filtro | orderBy:campo:orden">
+                            <td>{{contrato.idColumn}}</td>
+                            <td>{{ (contrato.nombre)?contrato.nombre:'**Sin Nombre**'}}</td>
+                            <td>{{(contrato.ACCIONES)?contrato.ACCIONES.length:0}}</td>           
+                          </tr>        
+                        </tbody>
+                      </table>                
+        </div>
+        <div class="col">
+
+            <h2>Contratos Mapeados</h2>
+
+            <h2>{{vm.contratosMapeados.length}} Todos los Contratos</h2>
+                <p>       
+                        <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                          Filtro
+                        </button>
+                      </p>
+                      <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                          ID: <input type="search" ng-model="filtro.idColumn" placeholder="Identificador contrato">
+                          Nombre: <input type="search" ng-model="filtro.nombre" placeholder="Nombre de contrato">
+                        </div>
+                      </div>
+                
+                
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col" ng-click="campo='id'; orden = !orden">#</th>
+                            <th scope="col" ng-click="campo='nombre'; orden = !orden">Nombre</th>
+                            <th scope="col" ng-click="campo='numeroAcciones'; orden = !orden">Acciones</th>         
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat="cm in vm.contratosMapeados | filter: filtro | orderBy:campo:orden">
+                            <td>{{cm.id}}</td>
+                            <td>{{cm.nombre}}</td>
+                            <td>{{cm.numeroAcciones}}</td>           
+                          </tr>        
+                        </tbody>
+                    </table>        
+
+        </div>
+    </div>
+
+    

@@ -1,0 +1,36 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Users\\ur00\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'start' ]
+2 info using npm@4.0.5
+3 info using node@v8.16.0
+4 verbose run-script [ 'prestart', 'start', 'poststart' ]
+5 info lifecycle repaso@1.0.0~prestart: repaso@1.0.0
+6 silly lifecycle repaso@1.0.0~prestart: no script for prestart, continuing
+7 info lifecycle repaso@1.0.0~start: repaso@1.0.0
+8 verbose lifecycle repaso@1.0.0~start: unsafe-perm in lifecycle true
+9 verbose lifecycle repaso@1.0.0~start: PATH: C:\Users\ur00\AppData\Roaming\npm\node_modules\npm\bin\node-gyp-bin;C:\1713\repaso\node_modules\.bin;C:\Program Files\Broadcom\Broadcom 802.11;;C:\Windows\System32;C:\Program Files\nodejs;C:\Program Files\nodejs\node_modules\npm\bin;C:\Program Files\Java\jdk1.8.0_111\bin;C:\Program Files (x86)\Brackets;C:\Users\ur00\AppData\Roaming\npm;C:\Users\ur00\AppData\Local\Android\sdk\platform-tools;C:\desarrollo\flutter\bin;C:\Program Files\Git\cmd;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Program Files\PuTTY\;C:\wamp64\bin\php\php5.6.25;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\Microsoft VS Code\bin;C:\apache-maven-3.5.3\bin;C:\Users\ur00\AppData\Roaming\npm
+10 verbose lifecycle repaso@1.0.0~start: CWD: C:\1713\repaso
+11 silly lifecycle repaso@1.0.0~start: Args: [ '/d /s /c',
+11 silly lifecycle   'json-server --watch db.json | http-server -o http://127.0.0.1:5000/index.html -p 5000' ]
+12 verbose stack Error: kill ENOSYS
+12 verbose stack     at process.kill (internal/process.js:172:20)
+12 verbose stack     at process.listener (C:\Users\ur00\AppData\Roaming\npm\node_modules\npm\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:86:15)
+12 verbose stack     at emitOne (events.js:121:20)
+12 verbose stack     at process.emit (events.js:211:7)
+12 verbose stack     at processEmit (C:\Users\ur00\AppData\Roaming\npm\node_modules\npm\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:146:32)
+12 verbose stack     at processEmit (C:\Users\ur00\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:146:32)
+12 verbose stack     at Signal.wrap.onsignal (internal/process.js:197:44)
+13 verbose cwd C:\1713\repaso
+14 error Windows_NT 6.1.7601
+15 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\ur00\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "run" "start"
+16 error node v8.16.0
+17 error npm  v4.0.5
+18 error code ENOSYS
+19 error errno ENOSYS
+20 error syscall kill
+21 error kill ENOSYS
+22 error If you need help, you may report this error at:
+22 error     <https://github.com/npm/npm/issues>
+23 verbose exit [ 1, true ]
