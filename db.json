@@ -15,5 +15,24 @@
   ],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "libros":[
+    {
+      "titulo": "Inventos Infernales",
+      "isbn": "123-LKJ",
+      "id": 1,
+      "numeroPaginas": 123,
+      "autor": "Dr Frankestein",
+      "digital": false
+    },
+    {
+      "titulo": "Mortadelo y Filemon",
+      "isbn": "14-MF",
+      "id": 2,
+      "numeroPaginas": 37,
+      "autor": "Ibañez",
+      "digital": true,
+      "formatos": [ "epub", "pdf" ]
+    }
+  ]
 }
