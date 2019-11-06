@@ -3,7 +3,7 @@ interface ILibrosService {
 
     /**
      * peticion GET para obtener todos los libros
-     * @return angular.IPromise<ILibro[]>
+     * @return   OK angular.IPromise<ILibro[]>    Error angular.IPromise<ng.IHttpResponse<T>>
      */
     getLibros(): angular.IPromise<ILibro[]>;
 
@@ -11,7 +11,7 @@ interface ILibrosService {
 
     delete(id: number): angular.IPromise<boolean>;
 
-    crear(libro: ILibro): angular.IPromise<boolean>;
+    crear(libro: ILibro): angular.IPromise<ILibro>;
 
     /**
      * Modifica un ILibro existente
@@ -32,18 +32,14 @@ class LibrosService implements ILibrosService {
       this.http = $http;
     }
 
-    public getLibros = ():any => {
+    public getLibros = (): angular.IPromise<any> => {
 
-        let url = "http://127.0.0.1:3000/libros";
+        const url = "http://127.0.0.1:3000/libros";
         console.trace('GET ' + url);
         return this.http.get(url).then( 
             (res) => { 
                 console.debug('peticcion correcta %o', res);
                 return res.data;
-            },
-            (res)=>{
-                console.debug('peticcion INcorrecta %o', res);
-                return res;
             });
     } 
     
@@ -57,12 +53,24 @@ class LibrosService implements ILibrosService {
         throw new Error("Method not implemented.");
     }
 
-    crear(libro: ILibro): angular.IPromise<boolean> {
-        throw new Error("Method not implemented.");
+    crear(libro: ILibro): angular.IPromise<any> {
+        const url = "http://127.0.0.1:3000/libros";
+        console.trace('POST ' + url);
+        return this.http.post(url, libro).then( 
+            (res) => { 
+                console.debug('peticcion correcta %o', res);
+                return res.data;
+            });
     }
 
-    modificar(id: number, libro: ILibro): angular.IPromise<boolean> {
-        throw new Error("Method not implemented.");
+    modificar(id: number, libro: ILibro): angular.IPromise<any> {
+        const url = "http://127.0.0.1:3000/libros/"+id;
+        console.trace('PUT ' + url);        
+        return this.http.put(url, libro).then( 
+            (res) => { 
+                console.debug('peticcion correcta %o', res);
+                return res.data;
+            });
     }
 
 }

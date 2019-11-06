@@ -16,9 +16,9 @@
   "profile": {
     "name": "typicode"
   },
-  "libros":[
+  "libros": [
     {
-      "titulo": "Inventos Infernales",
+      "titulo": "Inventos Infernales quer actulice la tabla",
       "isbn": "123-LKJ",
       "id": 1,
       "numeroPaginas": 123,
@@ -32,7 +32,18 @@
       "numeroPaginas": 37,
       "autor": "Ibañez",
       "digital": true,
-      "formatos": [ "epub", "pdf" ]
+      "formatos": [
+        "epub",
+        "pdf"
+      ]
+    },
+    {
+      "titulo": "las 1000 y una noches",
+      "id": 3
+    },
+    {
+      "titulo": "nuevo libro con actulizacion de formuarl¡ msdafmsdcsdmvcsdljvregoe",
+      "id": 4
     }
   ]
 }

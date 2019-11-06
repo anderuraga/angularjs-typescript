@@ -1,3 +1,70 @@
 <h2>Listado Libros</h2>
 
-{{vm.libros}}
+<p ng-if="vm.mensaje" class="text-danger">{{vm.mensaje}}</p>
+
+<div class="row">
+    <!-- tabla-->
+    <div class="col">
+        <table class="table text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" ng-click="campo='id'; orden= !orden">#</th>
+                    <th scope="col" ng-click="campo='titulo'; orden= !orden">Titulo</th>
+                    <th scope="col" ng-click="campo='autor'; orden= !orden">Autor</th>
+                    <th scope="col">Nº Pag.</th>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">Formatos</th>
+                    <th scope="col" colspan="2">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="libro in vm.libros | filter: filtro | orderBy:campo:orden">
+                    <th scope="col">{{libro.id}}</th>
+                    <td>{{libro.titulo}}</td>
+                    <td>{{libro.autor}}</td>
+                    <td>{{libro.numeroPaginas}}</td>
+                    <td>{{libro.isbn}}</td>
+                    <td>{{(libro.digital)?'':'papel'}}
+                        <ul ng-show="{{(libro.digital)}}">
+                            <li ng-repeat="formato in libro.formatos">{{formato}}</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <button type="button" ng-click="vm.editar(libro)" class="btn btn-success">
+                            <i class="fas fa-pencil-alt" ></i>
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" ng-click="vm.borrar(libro.id)" class="btn btn-danger">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>  
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- formulario -->
+    <div class="col">
+
+        <form name="formulario" ng-submit="vm.guardar()" novalidate>
+
+            <label for="titulo">Titulo</label>
+            <input type="text" 
+                   ng-model="vm.libroEditar.titulo" 
+                   name="titulo" 
+                   class="form-control"
+                   required minlength="2" maxlength="150">
+
+            <input type="submit" value="{{(vm.libroEditar)?'Modificar':'Crear Nuevo'}}" class="btn btn-primary" ng-disabled="formulario.$invalid || formulario.$pristine">
+
+        </form>        
+        
+    </div>
+
+    <div class="col">
+        <pre>{{ formulario | json }}</pre>
+    </div>    
+
+
+</div>

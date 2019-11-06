@@ -7,9 +7,6 @@ var LibrosService = (function () {
             return _this.http.get(url).then(function (res) {
                 console.debug('peticcion correcta %o', res);
                 return res.data;
-            }, function (res) {
-                console.debug('peticcion INcorrecta %o', res);
-                return res;
             });
         };
         console.trace('LibrosService constructor');
@@ -22,10 +19,20 @@ var LibrosService = (function () {
         throw new Error("Method not implemented.");
     };
     LibrosService.prototype.crear = function (libro) {
-        throw new Error("Method not implemented.");
+        var url = "http://127.0.0.1:3000/libros";
+        console.trace('POST ' + url);
+        return this.http.post(url, libro).then(function (res) {
+            console.debug('peticcion correcta %o', res);
+            return res.data;
+        });
     };
     LibrosService.prototype.modificar = function (id, libro) {
-        throw new Error("Method not implemented.");
+        var url = "http://127.0.0.1:3000/libros/" + id;
+        console.trace('PUT ' + url);
+        return this.http.put(url, libro).then(function (res) {
+            console.debug('peticcion correcta %o', res);
+            return res.data;
+        });
     };
     return LibrosService;
 }());
