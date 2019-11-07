@@ -18,12 +18,13 @@
   },
   "libros": [
     {
-      "titulo": "Inventos Infernales quer actulice la tabla",
+      "titulo": "Invssssssentos Infernales quer actulice la tabla333",
       "isbn": "123-LKJ",
       "id": 1,
       "numeroPaginas": 123,
       "autor": "Dr Frankestein",
-      "digital": false
+      "digital": true,
+      "formatos": {}
     },
     {
       "titulo": "Mortadelo y Filemon",
@@ -32,14 +33,19 @@
       "numeroPaginas": 37,
       "autor": "Ibañez",
       "digital": true,
-      "formatos": [
-        "epub",
-        "pdf"
-      ]
+      "formatos": {
+        "epub": false,
+        "pdf": true
+      }
     },
     {
       "titulo": "las 1000 y una noches",
-      "id": 3
+      "id": 3,
+      "digital": true,
+      "formatos": {
+        "epub": true,
+        "pdf": true
+      }
     },
     {
       "titulo": "nuevo libro con actulizacion de formuarl¡ msdafmsdcsdmvcsdljvregoe",

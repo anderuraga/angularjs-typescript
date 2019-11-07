@@ -2,10 +2,11 @@
 
 <p ng-if="vm.mensaje" class="text-danger">{{vm.mensaje}}</p>
 
+
 <div class="row">
     <!-- tabla-->
     <div class="col">
-        <table class="table text-center">
+        <table class="table">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col" ng-click="campo='id'; orden= !orden">#</th>
@@ -26,7 +27,10 @@
                     <td>{{libro.isbn}}</td>
                     <td>{{(libro.digital)?'':'papel'}}
                         <ul ng-show="{{(libro.digital)}}">
-                            <li ng-repeat="formato in libro.formatos">{{formato}}</li>
+                            <li ng-repeat="(key,value) in libro.formatos">
+                                    <span class="badge badge-{{(value)?'primary':'secondary'}}">{{key}}</span>
+                               
+                            </li>
                         </ul>
                     </td>
                     <td>
@@ -35,7 +39,7 @@
                         </button>
                     </td>
                     <td>
-                        <button type="button" ng-click="vm.borrar(libro.id)" class="btn btn-danger">
+                        <button type="button" ng-click="vm.libroEliminar = libro" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger">
                             <i class="fas fa-trash-alt"></i>
                         </button>  
                     </td>
@@ -47,6 +51,8 @@
     <!-- formulario -->
     <div class="col">
 
+        {{vm.formatos}}
+
         <form name="formulario" ng-submit="vm.guardar()" novalidate>
 
             <label for="titulo">Titulo</label>
@@ -56,15 +62,49 @@
                    class="form-control"
                    required minlength="2" maxlength="150">
 
-            <input type="submit" value="{{(vm.libroEditar)?'Modificar':'Crear Nuevo'}}" class="btn btn-primary" ng-disabled="formulario.$invalid || formulario.$pristine">
+            <label for="formato">Digital</label>       
+            <input type="checkbox" ng-model="vm.libroEditar.digital">
+
+            <div ng-show="vm.libroEditar.digital" class="border p-2">
+                
+                PDF
+                <input type="checkbox" name="formatos.pdf" ng-model="vm.libroEditar.formatos.pdf">  
+                EPUB
+                <input type="checkbox" name="formatos.epub" ng-model="vm.libroEditar.formatos.epub">  
+
+            </div>
+
+  
+            <pre>{{vm.libroEditar | json }}</pre>
+            
+
+            <br>
+            <input type="submit" value="{{(vm.libroEditar)?'Modificar':'Crear Nuevo'}}" class="btn btn-primary btn-block mt-3" ng-disabled="formulario.$invalid || formulario.$pristine">
 
         </form>        
         
     </div>
 
-    <div class="col">
-        <pre>{{ formulario | json }}</pre>
-    </div>    
 
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">¿Seguro que quieres Eliminar {{vm.libroEliminar.titulo}}?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Llamaremos a la inquisición para que queme el libro
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-danger" ng-click="vm.borrar()" data-dismiss="modal">ELIMINAR!!!!!</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
 </div>

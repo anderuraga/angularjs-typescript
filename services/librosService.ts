@@ -49,11 +49,18 @@ class LibrosService implements ILibrosService {
         throw new Error("Method not implemented.");
     }
 
-    delete(id: number): angular.IPromise<boolean> {
-        throw new Error("Method not implemented.");
+    public delete = (id: number): angular.IPromise<any> => {
+       
+        const url = "http://127.0.0.1:3000/libros/"+ id;
+        console.trace('DELETE ' + url);
+        return this.http.delete(url).then( (res) => { 
+            console.debug('peticcion correcta %o', res);
+            return res.data;
+        });
+
     }
 
-    crear(libro: ILibro): angular.IPromise<any> {
+    public crear = (libro: ILibro): angular.IPromise<any> => {
         const url = "http://127.0.0.1:3000/libros";
         console.trace('POST ' + url);
         return this.http.post(url, libro).then( 

@@ -16,12 +16,25 @@ var LibrosController = (function () {
             console.debug('click boton editar %o', libro);
             $scope.vm.libroEditar = angular.copy(libro);
         };
-        this.borrar = function (idLibro) {
-            console.debug('click boton borrar %s', idLibro);
+        this.borrar = function () {
+            var id = $scope.vm.libroEliminar.id;
+            console.debug('click boton borrar %s', id);
+            librosService.delete(id).then(function (data) {
+                $scope.vm.mensaje = "Libro Eliminado";
+                var posicion = $scope.vm.libros.indexOf($scope.vm.libroEliminar);
+                $scope.vm.libros.splice(posicion, 1);
+            });
         };
         this.guardar = function () {
             var lib = $scope.vm.libroEditar;
             console.debug('submitado formulario %o', lib);
+            if (!lib.digital) {
+                lib.formatos = undefined;
+            }
+            if (lib.digital && !lib.formatos) {
+                $scope.vm.mensaje = "*Es Necesario seleccionar algun formato";
+                return false;
+            }
             if (lib.id) {
                 librosService.modificar(lib.id, lib).then(function (data) {
                     console.info("libro editado %o", data);

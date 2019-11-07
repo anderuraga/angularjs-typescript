@@ -70,10 +70,14 @@ const Visualizer = window["ui-router-visualizer"].Visualizer;
 app.run([
     "$uiRouter",
     $uiRouter => {
-      const pluginInstance = $uiRouter.plugin(Visualizer);
+     // const pluginInstance = $uiRouter.plugin(Visualizer);
     }
   ]); 
 
+app.constant("formatosDigital", [ 
+                          { "id": 1, "name":"epub" , "active": false} ,
+                          { "id": 2, "name":"pdf" , "active": false} 
+                        ]);
 
 app.constant("contratosJson", [
     {

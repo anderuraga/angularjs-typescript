@@ -34,8 +34,11 @@ var Visualizer = window["ui-router-visualizer"].Visualizer;
 app.run([
     "$uiRouter",
     function ($uiRouter) {
-        var pluginInstance = $uiRouter.plugin(Visualizer);
     }
+]);
+app.constant("formatosDigital", [
+    { "id": 1, "name": "epub", "active": false },
+    { "id": 2, "name": "pdf", "active": false }
 ]);
 app.constant("contratosJson", [
     {

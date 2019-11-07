@@ -1,3 +1,4 @@
+
 interface ILibrosController extends ng.IScope{
     vm: LibrosController;
 }
@@ -8,7 +9,9 @@ class LibrosController implements ng.IController{
 
     public libros: Array<ILibro>;
     public libroEditar: ILibro;
+    public libroEliminar: ILibro;
     public mensaje: string;
+        
 
     //funciones
     public editar: any;
@@ -21,6 +24,7 @@ class LibrosController implements ng.IController{
         this.$scope.vm = this;
        // $scope.vm.mensaje = undefined;        
        // $scope.vm.libroEditar = undefined;    
+
         $scope.vm.libros = [];
 
         librosService.getLibros().then( 
@@ -39,16 +43,37 @@ class LibrosController implements ng.IController{
         this.editar = ( libro: ILibro ) => {
             console.debug('click boton editar %o', libro);
             $scope.vm.libroEditar = angular.copy(libro);
+
+          
         };
 
-        this.borrar = ( idLibro: number )=>{
-            console.debug('click boton borrar %s', idLibro);
+        this.borrar = ()=>{
+            const id =  $scope.vm.libroEliminar.id;
+            console.debug('click boton borrar %s', id);
+            librosService.delete(id).then(
+                (data)=>{
+                    $scope.vm.mensaje = "Libro Eliminado";
+                    const posicion = $scope.vm.libros.indexOf($scope.vm.libroEliminar);
+                    $scope.vm.libros.splice( posicion , 1);
+                }
+            );
 
         };
 
         this.guardar = ()=>{
             const lib = $scope.vm.libroEditar;
             console.debug('submitado formulario %o', lib );
+
+            if (!lib.digital){
+                lib.formatos = undefined;
+            }
+
+            //validar si es digital, al menos un formato
+            if ( lib.digital && !lib.formatos ){
+                $scope.vm.mensaje = "*Es Necesario seleccionar algun formato";
+                return false; // break de java
+            }
+
 
             if ( lib.id ){     // modificar
 

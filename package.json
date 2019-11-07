@@ -1,26 +1,27 @@
 {
-    "name": "repaso",
-    "version": "1.0.0",
-    "description": "repaso de AngularJS con TypeScript",
-    "main": "index.html",
-    "dependencies": {
-      "angular": "^1.6.9"
-    },
-    "devDependencies": {      
-      "typescript": "^3.5.1",
-      "@types/angular": "^1.6.43",
-      "@types/angular-translate": "^2.16.0",
-      "@types/angular-ui-router": "^1.1.40",      
-      "@uirouter/angularjs": "^1.0.22",
-      "@types/node": "^12.12.3",     
-      "http-server": "^0.11.1",
-      "json-server": "^0.15.1",      
-      "concurrently": "^5.0.0"
-    },
-    "scripts": {
-      "start": "json-server --watch db.json | http-server -o http://127.0.0.1:5000/index.html -p 5000"      
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC"
-  }
+  "name": "repaso",
+  "version": "1.0.0",
+  "description": "repaso de AngularJS con TypeScript",
+  "main": "index.html",
+  "dependencies": {
+    "angular": "^1.6.9"
+  },
+  "devDependencies": {
+    "@types/angular": "^1.6.43",
+    "@types/angular-translate": "^2.16.0",
+    "@types/angular-ui-router": "^1.1.40",
+    "@types/node": "^12.12.3",
+    "@uirouter/angularjs": "^1.0.22",
+    "checklist-model": "^1.0.0",
+    "concurrently": "^5.0.0",
+    "http-server": "^0.11.1",
+    "json-server": "^0.15.1",
+    "typescript": "^3.5.1"
+  },
+  "scripts": {
+    "start": "json-server --watch db.json | http-server -o http://127.0.0.1:5000/index.html -p 5000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
